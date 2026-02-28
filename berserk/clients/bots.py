@@ -98,6 +98,29 @@ class Bots(BaseClient):
         path = f"/api/bot/game/{game_id}/takeback/{int(accept)}"
         self._r.post(path)
 
+    def claim_victory(self, game_id: str) -> None:
+        """Claim victory when the opponent has left the game for a while.
+
+        Generally, this should only be called once the `opponentGone` event
+        is received in the bot game state stream and the `claimWinInSeconds`
+        time has elapsed.
+
+        :param game_id: ID of an in-progress game
+        """
+        path = f"/api/bot/game/{game_id}/claim-victory"
+        self._r.post(path)
+
+    def claim_draw(self, game_id: str) -> None:
+        """Claim a draw when the opponent has left the game for a while.
+
+        Generally, this should only be called once the `opponentGone` event
+        is received in the bot game state stream and enough time has elapsed.
+
+        :param game_id: ID of an in-progress game
+        """
+        path = f"/api/bot/game/{game_id}/claim-draw"
+        self._r.post(path)
+
     def accept_challenge(self, challenge_id: str) -> None:
         """Accept an incoming challenge.
 
