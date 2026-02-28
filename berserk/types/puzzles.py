@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import Literal, List
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .common import Color
 
@@ -49,3 +49,36 @@ class PuzzleRace(TypedDict):
     id: str
     # Puzzle race URL
     url: str
+
+
+class PuzzleBatchResponse(TypedDict):
+    """Response from getting a batch of puzzles."""
+
+    puzzles: List[PuzzleData]
+
+
+class SolvedPuzzle(TypedDict):
+    """A puzzle that was solved, for submission in a batch solve."""
+
+    id: str
+    win: bool
+
+
+class PuzzleReplayResponse(TypedDict):
+    """Response from getting puzzle replay IDs."""
+
+    ids: List[str]
+
+
+class PuzzleRacePlayer(TypedDict):
+    """A player in a puzzle race."""
+
+    name: str
+    score: NotRequired[int]
+
+
+class PuzzleRaceResult(TypedDict):
+    """Result of a puzzle race."""
+
+    id: str
+    players: NotRequired[List[PuzzleRacePlayer]]

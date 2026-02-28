@@ -104,3 +104,56 @@ class BroadcastsByUser(TypedDict):
     previousPage: int | None
     nextPage: int | None
     nbPages: int
+
+
+class BroadcastPlayerFideInfo(TypedDict):
+    """FIDE info for a broadcast player."""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    federation: NotRequired[str]
+
+
+class BroadcastPlayerEntry(TypedDict):
+    """A player entry in a broadcast tournament."""
+
+    name: str
+    rating: NotRequired[int]
+    title: NotRequired[str]
+    fideId: NotRequired[int]
+    fed: NotRequired[str]
+    played: NotRequired[int]
+    score: NotRequired[float]
+
+
+class BroadcastPlayerGame(TypedDict):
+    """A game played by a broadcast player."""
+
+    id: NotRequired[str]
+    round: NotRequired[str]
+    opponent: NotRequired[str]
+    color: NotRequired[str]
+    result: NotRequired[str]
+
+
+class BroadcastPlayerEntryWithFideAndGames(TypedDict):
+    """A single broadcast player with FIDE info and games."""
+
+    name: str
+    rating: NotRequired[int]
+    title: NotRequired[str]
+    fideId: NotRequired[int]
+    fed: NotRequired[str]
+    played: NotRequired[int]
+    score: NotRequired[float]
+    fide: NotRequired[BroadcastPlayerFideInfo]
+    games: NotRequired[List[BroadcastPlayerGame]]
+
+
+class BroadcastTeamEntry(TypedDict):
+    """A team entry in a broadcast tournament team leaderboard."""
+
+    name: str
+    score: NotRequired[float]
+    played: NotRequired[int]
+    players: NotRequired[List[str]]

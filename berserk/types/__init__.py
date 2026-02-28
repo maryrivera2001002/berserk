@@ -11,6 +11,9 @@ from .account import (
 )
 from .broadcast import (
     BroadcastPlayer,
+    BroadcastPlayerEntry,
+    BroadcastPlayerEntryWithFideAndGames,
+    BroadcastTeamEntry,
     BroadcastTop,
     PaginatedBroadcasts,
     BroadcastsByUser,
@@ -20,8 +23,14 @@ from .bulk_pairings import BulkPairing, BulkPairingGame
 from .external_engine import ExternalEngine
 from .challenges import ChallengeJson
 from .common import ClockConfig, LightUser, OnlineLightUser, VariantKey
-from .fide import FidePlayer
-from .puzzles import PuzzleData, PuzzleRace
+from .fide import FidePlayer, FideRatingHistory
+from .puzzles import (
+    PuzzleData,
+    PuzzleRace,
+    PuzzleBatchResponse,
+    PuzzleReplayResponse,
+    PuzzleRaceResult,
+)
 from .opening_explorer import (
     OpeningExplorerRating,
     OpeningStatistic,
@@ -31,12 +40,16 @@ from .studies import ChapterIdName
 from .team import PaginatedTeams, Team
 from .tournaments import ArenaResult, CurrentTournaments, SwissResult, SwissInfo
 from .tv import TVFeed
+from .users import UserNote
 
 __all__ = [
     "AccountInformation",
     "ArenaResult",
     "BroadcastPlayer",
+    "BroadcastPlayerEntry",
+    "BroadcastPlayerEntryWithFideAndGames",
     "BroadcastsByUser",
+    "BroadcastTeamEntry",
     "BroadcastTop",
     "BulkPairing",
     "BulkPairingGame",
@@ -46,6 +59,7 @@ __all__ = [
     "CurrentTournaments",
     "ExternalEngine",
     "FidePlayer",
+    "FideRatingHistory",
     "LightUser",
     "OnlineLightUser",
     "OpeningExplorerRating",
@@ -55,8 +69,11 @@ __all__ = [
     "Perf",
     "Preferences",
     "Profile",
+    "PuzzleBatchResponse",
     "PuzzleData",
     "PuzzleRace",
+    "PuzzleRaceResult",
+    "PuzzleReplayResponse",
     "Speed",
     "StreamerInfo",
     "SwissInfo",
@@ -64,5 +81,6 @@ __all__ = [
     "Team",
     "Timeline",
     "TVFeed",
+    "UserNote",
     "VariantKey",
 ]
